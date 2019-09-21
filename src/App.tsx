@@ -1,24 +1,38 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Layout, Menu, Row, Col, Button } from 'antd';
+import Logo from './logo.svg'
 import './App.css';
+
+const { Header, Footer, Content } = Layout;
+
 
 const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Layout>
+        <Header>
+          <Menu
+            theme="dark"
+            mode="horizontal"
+            defaultSelectedKeys={['1']}
+            style={{ lineHeight: '64px' }}
+          >
+            <Menu.Item key="1">Generate Identity</Menu.Item>
+            <Menu.Item key="2">Delete Identity</Menu.Item>
+            <Menu.Item key="3">About</Menu.Item>
+          </Menu>
+        </Header>
+        <Content className="main">
+          <Row>
+            <Col span={12} offset={6}>
+              <Button type="primary" size="small" loading>
+                Loading
+              </Button>
+            </Col>
+          </Row>
+        </Content>
+        <Footer style={{ textAlign: 'center' }}>DreamTeam ©2019 Created by DreamTeam devs</Footer>
+      </Layout>
     </div>
   );
 }
