@@ -1,3 +1,7 @@
+import { contractAddress } from './const';
+import { utils } from 'ethers';
+import { _getWallet } from './wallet';
+
 /**
  * Make an autograph for somebody else. The content which this function returns has to be rendered on QR code.
  * @param {object} params - Parameters.
@@ -7,8 +11,17 @@
 export async function createAutograph({
   expiresAt = new Date(Date.now() + 1000 * 60 * 2)
 } = {}) {
-  await new Promise(r => setTimeout(r, 1000));
-  return '0x0b30919188578ad860ffbdfb6ada9938894b893e0d768b13508b4f11629f152a107d781efe1ec639dc7864dfade20b9aad81a8af6cd92dddf538c98f482de6931b';
+  const wallet = _getWallet();
+  return await wallet.signMessage(utils.solidityKeccak256(
+    [
+      'address',
+      'uint256'
+    ],
+    [
+      contractAddress,
+      Math.floor(expiresAt.getTime() / 1000)
+    ]
+  ));
 }
 
 /**

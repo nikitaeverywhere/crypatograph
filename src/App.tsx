@@ -1,5 +1,6 @@
 import React from 'react';
 import { Layout, Menu, Row, Col, Button } from 'antd';
+import './modules'
 import Logo from './logo.svg'
 import './App.css';
 
