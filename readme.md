@@ -1,6 +1,20 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Crypatograph
 
-## Available Scripts
+Crypto autographs as crypto collectibles: give, get and trade autographs!
+The proof of concept DApp working on top of Ethereum testnet (Kovan).
+
+Access this DApp at [zitros.github.io/crypatograph](https://zitros.github.io/crypatograph)!
+
+![image](https://user-images.githubusercontent.com/4989256/65392426-8c89c380-dd7d-11e9-9bc3-2a144887d56a.png)
+
+DApp highlights:
+
++ The proof of concept for [delegated transactions](https://github.com/ZitRos/ethereum-delegated-tx-service)
++ Tradeable non-Fungible Tokens (NFTs) as autographs
++ Simple usage (generate QR to give autograph, scan QR to get an autograph)
++ Simplified wallet implementation (no web3 integration yet)
+
+## Development
 
 In the project directory, you can run:
 
@@ -37,8 +51,6 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
 
-## Learn More
+## License
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+[MIT](LICENSE) © [Sergey Zhigunov](https://github.com/szhigunov), [Nikita Savchenko](https://github.com/zitros), [Kirill Beresnev](https://github.com/derain)
