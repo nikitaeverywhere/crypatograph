@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { HashRouter as Router, Route, Link } from "react-router-dom";
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -69,7 +69,7 @@ const App: React.FC = () => {
   return (
     <div className={classes.root}>
       <Box>
-        <Router>
+        <Router basename="auth-dapp">
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>

@@ -30,7 +30,7 @@ const routes = [
     },
     {
       key: 'get',
-      path: "/get/:id",
+      path: "/qrcode/get/:id",
       component: Get
     }
 ];

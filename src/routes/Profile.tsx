@@ -13,6 +13,7 @@ import ListItemText from '@material-ui/core/ListItemText';
 import TextField from '@material-ui/core/TextField';
 
 import Typography from '@material-ui/core/Typography';
+import Button from '@material-ui/core/Button';
 
 import { getWalletAddress } from '../modules/wallet'
 
@@ -47,19 +48,24 @@ const Profile:React.SFC = () => {
         }
     }, [address])
 
-    console.log(address)
     return (address ? 
         <Box className={classes.profileBox}>
-            <Typography variant="h5" component="h3">
-                Profile
-            </Typography>
+            <Box style={{ display: 'flex', alignContent:'center', flexDirection: 'row'}}>
+                <Typography variant="h5" component="p">
+                    John <b>DOE</b> Profile
+                </Typography>
+                <Avatar className={classes.avatar}>JD</Avatar>
+            </Box>
             <Divider />
-            <Avatar className={classes.avatar}>{address.slice(2,4)}</Avatar>
             <Typography variant="h6" component="h6">
-                UserName
+                
             </Typography>
             <Box>
                 <TextField id="standard-input" className={classes.textField} label="Wallet" defaultValue={address.toLowerCase()} margin="normal" />
+            </Box>
+            <Box>
+                <Button>Copy</Button>
+                <Button color="secondary">Reveal secret</Button>
             </Box>
         </Box>
     : null)

@@ -27,7 +27,7 @@ const Create:React.SFC = ({ history } : any) => {
     const classes = useStyles();
 
     React.useEffect(() => {
-        createAuth((url: string) => (history.push('/qrcode/?url=' + url)))
+        createAuth((url: string) => history.push(`/qrcode/${url}`))
     })
     
     
