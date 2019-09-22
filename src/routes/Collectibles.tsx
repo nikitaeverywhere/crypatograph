@@ -11,6 +11,7 @@ import Box from "@material-ui/core/Box";
 import Avatar from '@material-ui/core/Avatar';
 import Badge from '@material-ui/core/Badge';
 import ImageIcon from '@material-ui/icons/VerifiedUser';
+import LaunchIcon from '@material-ui/icons/Launch';
 import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles(theme => ({
@@ -18,7 +19,14 @@ const useStyles = makeStyles(theme => ({
     width: "100%",
     maxWidth: 360
   },
-  collectiblesBox: {}
+  collectiblesBox: {
+    marginTop: 16,
+    height: '100%',
+    display: "flex",
+    justifyContent: 'flex-start',
+    alignContent: 'flex-start',
+    flexDirection: "column"
+  }
 }));
 
 const Collectibles: React.SFC = () => {
@@ -29,12 +37,15 @@ const Collectibles: React.SFC = () => {
       <Box
         style={{
           display: "flex",
-          alignContent: "center",
+          alignContent: 'center',
           flexDirection: "row"
         }}
       >
         <Typography variant="h5" component="p">
-          John <b>DOE</b> Collectibles
+          John <b>DOE</b> Authographs
+          <a style={{ marginLeft: 16 }} target="_blank" href="https://kovan.etherscan.io/address/0xf3214fa89da13b1138be07c9a020e28f9db2a627">
+            <LaunchIcon color="action"/>
+          </a>
         </Typography>
       </Box>
       <Divider />
@@ -72,6 +83,9 @@ const Collectibles: React.SFC = () => {
             </Badge>
           </ListItemAvatar>
           <ListItemText primary="Polly Jean HARVEY" secondary="July 21, 2014 | glastonbury, UK" />
+          <a target="_blank" href="https://kovan.etherscan.io/tx/0x2d5921fd5f6f8862c440e82b4a6e94cbff3f566f04ec84afe247067a4aa47722">
+            <LaunchIcon color="action"/>
+          </a>
         </ListItem>
       </List>
     </Box>

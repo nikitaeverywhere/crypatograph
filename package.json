@@ -25,7 +25,7 @@
     "typescript": "3.6.3",
     "web3": "^1.2.1"
   },
-  "homepage": "https://szhigunov.github.io/auth-dapp",
+  "homepage": "https://szhigunov.github.io/crypatograph-ai",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",

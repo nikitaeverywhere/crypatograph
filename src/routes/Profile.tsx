@@ -32,6 +32,7 @@ const useStyles = makeStyles(theme => ({
         width: '250px'
       },
     profileBox: {
+        backgroundColor: '#fff',
         marginTop: '16px',
         height: '100%',
         justifyContent: 'flex-start',

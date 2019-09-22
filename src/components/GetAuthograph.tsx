@@ -17,7 +17,7 @@ const GetAuthograph:React.SFC = () => {
 
     return (
         <Link to="/get">
-            <Button>
+            <Button variant="outlined" disabled>
                 Get Authograph
             </Button>
         </Link>

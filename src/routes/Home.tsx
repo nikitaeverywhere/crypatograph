@@ -28,16 +28,16 @@ const Home:React.SFC = () => {
         <Box className={classes.introBox}>
             <Paper className={classes.root}>
                 <Typography variant="h5" component="h3">
-                    Welcome to Crypatographer.
+                    Welcome to <b>Crypatograph</b>
                 </Typography>
                 <br/>
                 <Typography component="p">
-                    <b>Crypatographer</b> can be used to collect authographs and proofs of meeting from people you met.
+                    <b>Crypatograph</b> can be used to collect authographs and proofs of meeting from people you met.
                 </Typography>
                 <br/>
                 <Box className={classes.buttonBox}>
                     <CreateAuthograph />
-                    <GetAuthograph />
+                    {/* <GetAuthograph /> */}
                 </Box>
             </Paper>
         </Box>
