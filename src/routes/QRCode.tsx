@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
 
 const QRCode:React.SFC = ({match}: any) => {
     const classes = useStyles();
-    const qr = make(`${process.env.REACT_APP_BASE_URL}/qrcode/get/${match.params.id}`)
+    const qr = make(`${process.env.REACT_APP_BASE_URL}/#/qrcode/get/${match.params.id}`)
     const QRCodeComponent = qr && qr.createSvgTag(2, 3)
 
     return (
