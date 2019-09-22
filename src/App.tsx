@@ -69,7 +69,7 @@ const App: React.FC = () => {
   return (
     <div className={classes.root}>
       <Box style={{ backgroundColor: '#fff' }}>
-        <Router basename="auth-dapp">
+        <Router basename="crypatograph-ai">
           <AppBar position="static">
             <Toolbar>
               <Typography variant="h6" className={classes.title}>
