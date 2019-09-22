@@ -3,7 +3,7 @@
 Crypto autographs as crypto collectibles: give, get and trade autographs!
 The proof of concept DApp working on top of Ethereum testnet (Kovan).
 
-Access this DApp at [zitros.github.io/crypatograph](https://zitros.github.io/crypatograph)!
+Access this DApp at [szhigunov.github.io/crypatograph-ai](https://szhigunov.github.io/crypatograph-ai)!
 
 ![image](https://user-images.githubusercontent.com/4989256/65392426-8c89c380-dd7d-11e9-9bc3-2a144887d56a.png)
 
