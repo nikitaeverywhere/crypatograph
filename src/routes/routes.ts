@@ -21,6 +21,7 @@ const routes = [
     {
       key: 'qrcode',
       path: "/qrcode/:id",
+      exact: true,
       component: QRCode
     },
     {
@@ -31,6 +32,7 @@ const routes = [
     {
       key: 'get',
       path: "/qrcode/get/:id",
+      exact: true,
       component: Get
     }
 ];
