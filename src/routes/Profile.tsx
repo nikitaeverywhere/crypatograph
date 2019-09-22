@@ -22,6 +22,8 @@ const useStyles = makeStyles(theme => ({
         flexGrow: 1,
     },
     avatar: {
+        width: 80,
+        height: 80,
         margin: 10,
     },
     textField: {
@@ -54,12 +56,14 @@ const Profile:React.SFC = () => {
                 <Typography variant="h5" component="p">
                     John <b>DOE</b> Profile
                 </Typography>
-                <Avatar className={classes.avatar}>JD</Avatar>
             </Box>
             <Divider />
             <Typography variant="h6" component="h6">
                 
             </Typography>
+            <Box>
+                <Avatar className={classes.avatar}>JD</Avatar>
+            </Box>
             <Box>
                 <TextField id="standard-input" className={classes.textField} label="Wallet" defaultValue={address.toLowerCase()} margin="normal" />
             </Box>
