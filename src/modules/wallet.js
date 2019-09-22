@@ -34,7 +34,7 @@ export async function revealSeedWords() {
 /**
  * @returns {string} - Current wallet's address.
  */
-export async function getWalletAddress() {
+export function getWalletAddress() {
   return wallet.address;
 }
 

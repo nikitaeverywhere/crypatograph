@@ -15,19 +15,22 @@ export async function createAutograph({
   autographs = 50,
 } = {}) {
   const wallet = _getWallet();
+  const giver = getWalletAddress();
   const signature = await wallet.signMessage(utils.solidityKeccak256(
     [
-      'address',
-      'uint256',
-      'uint256'
+      'address', // contractAddress
+      'address', // autograph giver's address
+      'uint256', // number of autographs
+      'uint256'  // expires at
     ],
     [
       contractAddress,
+      giver,
       autographs,
       expiresAt = Math.floor(expiresAt.getTime() / 1000)
     ]
   ));
-  return `${autographs}|${expiresAt}|${signature}`;
+  return `${giver}|${autographs}|${expiresAt}|${signature}`;
 }
 
 /**
@@ -36,12 +39,18 @@ export async function createAutograph({
  * @returns {string} - 'confirmed'
  */
 export async function claimAutograph(autograph) {
-  const args = autograph.split('|');
+  const [giver, autographs, expiresAt, giverSignature] = autograph.split('|');
   const wallet = _getWallet();
   const { id, signatureOptions } = await httpPost(`${delegatedBackEndUrl}/request`, {
     contractAddress: contractAddress,
     from: getWalletAddress(),
-    functionArguments: args,
+    functionArguments: [
+      autographs,
+      expiresAt,
+      getWalletAddress(),
+      giver,
+      giverSignature
+    ],
     functionName: 'claimAutograph'
   });
   const sigOption = signatureOptions.find(x => x.standard === 'eth_personalSign');
@@ -50,17 +59,21 @@ export async function claimAutograph(autograph) {
   }
   const delegatedSignature = await wallet.signMessage(utils.solidityKeccak256(
     [
-      'address',
-      'uint256',
-      'uint256',
-      'bytes'
+      'address', // contract address
+      'address', // NFT receiver
+      'uint256', // number of autographs
+      'uint256', // expires at
+      'bytes'    // autograph giver's signature
     ],
     [
       contractAddress,
-      ...args
+      getWalletAddress(),
+      autographs,
+      expiresAt,
+      giverSignature
     ]
   ));
-  const { result } = await httpPost(`${delegatedBackEndUrl}/response`, {
+  const { result } = await httpPost(`${delegatedBackEndUrl}/confirm`, {
     requestId: id,
     signatureStandard: 'eth_personalSign',
     signature: delegatedSignature
