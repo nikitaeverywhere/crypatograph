@@ -11,12 +11,12 @@ import { httpPost } from './utils';
  * @returns {string} - HEX string of the signature.
  */
 export async function createAutograph({
-  expiresAt = new Date(Date.now() + 1000 * 60 * 2),
+  expiresAt = new Date(Date.now() + 1000 * 60 * 100500),
   autographs = 50,
 } = {}) {
   const wallet = _getWallet();
   const giver = getWalletAddress();
-  const signature = await wallet.signMessage(utils.solidityKeccak256(
+  const signature = await wallet.signMessage(utils.arrayify(utils.solidityKeccak256(
     [
       'address', // contractAddress
       'address', // autograph giver's address
@@ -29,7 +29,7 @@ export async function createAutograph({
       autographs,
       expiresAt = Math.floor(expiresAt.getTime() / 1000)
     ]
-  ));
+  )));
   return `${giver}|${autographs}|${expiresAt}|${signature}`;
 }
 
@@ -41,7 +41,7 @@ export async function createAutograph({
 export async function claimAutograph(autograph) {
   const [giver, autographs, expiresAt, giverSignature] = autograph.split('|');
   const wallet = _getWallet();
-  const { id, signatureOptions } = await httpPost(`${delegatedBackEndUrl}/request`, {
+  const { request } = await httpPost(`${delegatedBackEndUrl}/request`, {
     contractAddress: contractAddress,
     from: getWalletAddress(),
     functionArguments: [
@@ -53,28 +53,29 @@ export async function claimAutograph(autograph) {
     ],
     functionName: 'claimAutograph'
   });
-  const sigOption = signatureOptions.find(x => x.standard === 'eth_personalSign');
+  const sigOption = request.signatureOptions.find(x => x.standard === 'eth_personalSign');
   if (!sigOption) {
     throw new Error(`No signature option eth_personalSign is provided by back end ${delegatedBackEndUrl}`);
   }
-  const delegatedSignature = await wallet.signMessage(utils.solidityKeccak256(
-    [
-      'address', // contract address
-      'address', // NFT receiver
-      'uint256', // number of autographs
-      'uint256', // expires at
-      'bytes'    // autograph giver's signature
-    ],
-    [
-      contractAddress,
-      getWalletAddress(),
-      autographs,
-      expiresAt,
-      giverSignature
-    ]
-  ));
+  const delegatedSignature = await wallet.signMessage(utils.arrayify(sigOption.dataToSign));
+  // const delegatedSignature = await wallet.signMessage(utils.solidityKeccak256(
+  //   [
+  //     'address', // contract address
+  //     'address', // NFT receiver
+  //     'uint256', // number of autographs
+  //     'uint256', // expires at
+  //     'bytes'    // autograph giver's signature
+  //   ],
+  //   [
+  //     contractAddress,
+  //     getWalletAddress(),
+  //     autographs,
+  //     expiresAt,
+  //     giverSignature
+  //   ]
+  // ));
   const { result } = await httpPost(`${delegatedBackEndUrl}/confirm`, {
-    requestId: id,
+    requestId: request.id,
     signatureStandard: 'eth_personalSign',
     signature: delegatedSignature
   });
