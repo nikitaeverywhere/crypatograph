@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/crypatograph/static/css/main.e04360f9.chunk.css",
+    "main.js": "/crypatograph/static/js/main.04d5166b.chunk.js",
+    "main.js.map": "/crypatograph/static/js/main.04d5166b.chunk.js.map",
+    "runtime-main.js": "/crypatograph/static/js/runtime-main.ffee82da.js",
+    "runtime-main.js.map": "/crypatograph/static/js/runtime-main.ffee82da.js.map",
+    "static/js/2.2a151de1.chunk.js": "/crypatograph/static/js/2.2a151de1.chunk.js",
+    "static/js/2.2a151de1.chunk.js.map": "/crypatograph/static/js/2.2a151de1.chunk.js.map",
+    "index.html": "/crypatograph/index.html",
+    "precache-manifest.2a4caada607696ae5f4433168cff30f6.js": "/crypatograph/precache-manifest.2a4caada607696ae5f4433168cff30f6.js",
+    "service-worker.js": "/crypatograph/service-worker.js",
+    "static/css/main.e04360f9.chunk.css.map": "/crypatograph/static/css/main.e04360f9.chunk.css.map"
+  }
+}
